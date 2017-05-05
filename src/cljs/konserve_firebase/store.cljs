@@ -26,6 +26,8 @@
   (-get-in [this key-vec]
     (->> (firebase/get-in! firebase-db (-prefixed prefix key-vec))
          (with-xf (map firebase/with-nil))))
+  (-assoc-in [this key-vec val]
+    (firebase/assoc-in! firebase-db (-prefixed prefix key-vec) val))
   (-update-in [this key-vec up-fn]
     (firebase/update-in! firebase-db (-prefixed prefix key-vec) up-fn))
   (-dissoc [this key]

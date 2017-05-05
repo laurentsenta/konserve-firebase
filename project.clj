@@ -10,7 +10,7 @@
    [cljsjs/firebase "3.7.3-0"]
 
    [io.replikativ/superv.async "0.2.6"]
-   [io.replikativ/konserve "0.4.8"]
+   [io.replikativ/konserve "0.4.9"]
 
    [lein-doo "0.1.7" :scope "test"]]
 

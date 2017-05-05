@@ -108,6 +108,7 @@
   (get-in! db [key]))
 
 (defn update-in! [db path f]
+  ;; TODO: Use a firebase transaction here
   (go (let [v (<! (get-in! db path))]
         (<! (assoc-in! db path (f v))))))
 
