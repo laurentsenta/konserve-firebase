@@ -9,6 +9,7 @@ Usage
 -----
 
 [![Clojars Project](https://img.shields.io/clojars/v/konserve-firebase.svg)](https://clojars.org/konserve-firebase)
+[![CircleCI](https://circleci.com/gh/lsenta/konserve-firebase.svg?style=svg)](https://circleci.com/gh/lsenta/konserve-firebase)
 
 The library provides 2 namespaces:
 - `konserve-firebase.core`: light layer around the Firebase javascript lib,

@@ -1,0 +1,23 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/konserve-firebase
+    docker:
+      - image: openjdk:8
+    environment:
+      LEIN_ROOT=nbd
+    steps:
+      - checkout
+      - restore_cache:
+          key: {{ checksum "project.clj" }}
+      - run: bin/lein deps
+      - save_cache:
+          paths:
+            - ~/.m2
+            - ~/.lein
+          key: {{ checksum "project.clj" }}
+      - run: bin/lein do phantom once test, jar, deploy clojars
+      - store_artifacts:
+          path: target/cci-demo-clojure.jar
+          destination: uberjar
+
