@@ -1,4 +1,4 @@
-(defproject konserve-firebase "0.0.1"
+(defproject lsenta/konserve-firebase "0.0.1"
 
   :description "A Firebase backend for konserve"
   :url "https://github.com/lsenta/konserve-firebase"
