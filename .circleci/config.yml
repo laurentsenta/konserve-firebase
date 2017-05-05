@@ -17,7 +17,3 @@ jobs:
             - ~/.lein
           key: {{ checksum "project.clj" }}
       - run: bin/lein do phantom once test, jar, deploy clojars
-      - store_artifacts:
-          path: target/cci-demo-clojure.jar
-          destination: uberjar
-
