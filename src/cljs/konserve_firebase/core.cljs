@@ -1,3 +1,8 @@
+;; konserve-firebase.core: provide a wrapper around Firebase javascript library
+;;
+;; A Firebase database is a giant JSON object, so the mapping between
+;; Clojure(script) data and Firebase is straigthforward.
+;;
 (ns konserve-firebase.core
   (:refer-clojure :exclude [get-in! assoc! update-in! assoc-in! exists? dissoc dissoc-in!])
   (:require [incognito.edn :refer [read-string-safe]]
@@ -9,6 +14,10 @@
 
 ;; Serialization & Encodings
 ;; -------------------------
+
+;; The encoding is the hackiest part,
+;; we want to preserve data types (keywords, uuid)
+;; while preserving the JSON structure.
 
 (defn -frb-encode-rec [x]
   (cond

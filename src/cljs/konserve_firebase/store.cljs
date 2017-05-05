@@ -1,3 +1,4 @@
+;; konserve-firebase.store: provide a konserve storage backend for FirebaseDB
 (ns konserve-firebase.store
   (:require
     [incognito.edn :refer [read-string-safe]]
