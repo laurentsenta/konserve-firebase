@@ -1,0 +1,5 @@
+export FIREBASE_API_KEY="AI..."
+export FIREBASE_AUTH_DOMAIN="my-project.firebaseapp.com"
+export FIREBASE_DATABASE_URL="https://my-project.firebaseio.com"
+export FIREBASE_STORAGE_BUCKET="my-project.appspot.com"
+export FIREBASE_MESSAGING_SENDER_ID="16..."

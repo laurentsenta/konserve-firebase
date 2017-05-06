@@ -2,16 +2,13 @@
   (:require
     [konserve-firebase.test-env :refer [firebase-config]]
     [cljsjs.firebase]
-    [goog.string :as gstring]))
-
-(defn format
-  [fmt & args]
-  (apply gstring/format fmt args))
+    [goog.string :as gstring]
+    goog.string.format))
 
 (defn now [] (.getTime (js/Date.)))
 
 (defn make-test-id []
-  (format "test-%011d-%05d" (now) (rand-int 10000)))
+  (gstring/format "test-%011d-%06d" (now) (rand-int 10000)))
 
 (defn make-db []
   ((.. js/firebase -database)))

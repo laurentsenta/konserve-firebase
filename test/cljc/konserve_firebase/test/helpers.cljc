@@ -5,17 +5,16 @@
        :cljs
        [cljs.core.async :refer [timeout]])
     #?(:clj
-            [clojure.test :refer [is]
-             :cljs [cljs.test :refer-macros [async is]]]))
+            [clojure.test :refer [is]]))
   #?(:cljs
      (:require-macros
+       [cljs.test :refer [async is]]
        ;; self-import makes the macro refer'able from clojurescript
        [konserve-firebase.test.helpers :refer [go-async-timeoutable]])))
 
 
-
 ;; Tooling
-;; http://stackoverflow.com/a/30781278/843194
+;; Copied & extended from http://stackoverflow.com/a/30781278/843194
 
 (defn test-async
   "Asynchronous test awaiting ch to produce a value or close."
@@ -24,11 +23,11 @@
      (<!! ch)
      :cljs
      (async done
-            (go-try S
-              (take? S ch (fn [x]
-                            (is (not (instance? js/Error x))
-                                (str "Got exception: " x))
-                            (done)))))))
+       (go-try S
+         (take? S ch (fn [x]
+                       (is (not (instance? js/Error x))
+                           (str "Got exception: " x))
+                       (done)))))))
 
 (defn test-within
   "Asserts that ch does not close or produce a value within ms. Returns a
@@ -43,6 +42,10 @@
         (is (not= ch t)
             (str "Assert failed because: Test should have finished within " ms "ms.")))
       v)))
+
+#?(:clj
+   (defmacro get-env [name & [default]]
+     (or (System/getenv name) default)))
 
 #?(:clj
    (defmacro go-async-timeoutable

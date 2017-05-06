@@ -10,10 +10,12 @@ jobs:
       - checkout
       - restore_cache:
           key: {{ checksum "project.clj" }}
+      - run: apt update && apt install -qy phantomjs
       - run: bin/lein deps
       - save_cache:
           paths:
             - ~/.m2
             - ~/.lein
           key: {{ checksum "project.clj" }}
+    test:
       - run: bin/lein do phantom once test, jar, deploy clojars

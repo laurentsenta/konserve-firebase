@@ -2,8 +2,7 @@ konserve-firebase
 =================
 
 Firebase backend for the [konserve](https://github.com/replikativ/konserve) 
-library.
-This is Clojurescript only.
+library. This is Clojurescript only.
 
 Usage
 -----
@@ -12,7 +11,7 @@ Usage
 [![CircleCI](https://circleci.com/gh/lsenta/konserve-firebase.svg?style=svg)](https://circleci.com/gh/lsenta/konserve-firebase)
 
 The library provides 2 namespaces:
-- `konserve-firebase.core`: light layer around the Firebase javascript lib,
+- `konserve-firebase.core`: thin layer around the Firebase javascript lib, mimics a clojure map,
 - `konserve-firebase.store`: konserve storage backend.
 
 
@@ -30,10 +29,14 @@ Contribute
 
 ```bash
 git clone git@github.com:lsenta/konserve-firebase.git
-cp env/konserve_firebase/test_env.cljs.example env/konserve_firebase/test_env.cljs
-vim env/konserve_firebase/test_env.cljs # put your firebase config
-lein cljsbuild once test
+cp prepare.sh.example prepare.sh
+vim prepare.sh # put your firebase config
+
+source ./prepare.sh
+make test
 ```
+
+CLI Testing relies on `doo`. It requires [some setup](https://github.com/bensu/doo#setting-up-environments).
 
 
 License

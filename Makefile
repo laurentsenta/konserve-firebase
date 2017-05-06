@@ -1,4 +1,7 @@
 
+figwheel:
+	lein figwheel testbook
+
 test:
 	lein doo phantom auto
 
@@ -7,4 +10,6 @@ jar:
 
 deploy:
 	lein deploy clojars
+
+.PHONY: test
 

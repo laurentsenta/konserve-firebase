@@ -1,6 +1,12 @@
-profiles.clj
-target/
-test_env.cljs
-out/
+/profiles.clj
+/target/
+/out/
+
 pom.xml
 pom.xml.asc
+
+/doo-index.html
+/prepare.sh
+/resources/public/js-test/
+/figwheel_server.log
+/checkouts/

@@ -33,13 +33,13 @@
 
 (deftest retrieve-a-firebase-store
   (testing "When I build a firebase store, I'll get something"
-    (go-async-timeoutable S 2500
+    (go-async-timeoutable S 20000
       (let [store (<? S (new-firebasedb-store @db))]
         (is (not (nil? store)))))))
 
 (deftest assoc-then-get-simple
   (testing "When I use the konserve store API to write a value, I can retrieve it later."
-    (go-async-timeoutable S 2500
+    (go-async-timeoutable S 20000
       (let [store (<? S (new-firebasedb-store @db
                                               :prefix [prefix "store" @test-id "basic"]))]
         (<? S (k/assoc-in store [:a] "a"))
@@ -48,7 +48,7 @@
 
 (deftest assoc-then-get-complex
   (testing "When I write a map with submaps and vectors, I can't retrieve the same value later"
-    (go-async-timeoutable S 2500
+    (go-async-timeoutable S 20000
       (let [store (<? S (new-firebasedb-store @db
                                               :prefix [prefix "store" @test-id "complex-values"]))]
         (<? S (k/assoc-in store [:x] {:a 1 :b 2 "c" 4 :k {:sub 1 "2" [:some "vector"]}}))
@@ -60,7 +60,7 @@
 
 (deftest update-then-get
   (testing "When I do an update using a function, I'll see the value change on the next get"
-    (go-async-timeoutable S 2500
+    (go-async-timeoutable S 20000
       (let [store (<? S (new-firebasedb-store @db
                                               :prefix [prefix "store" @test-id "messy"]))]
         (<? S (k/assoc-in store [:x] {:a 1 :b 2 "c" 4 :k {:sub 1 "2" [:some "vector"]}}))
@@ -72,9 +72,21 @@
 
 (deftest test-logs
   (testing "When I append a log with some complex values, I can list them later"
-    (go-async-timeoutable S 3000
+    (go-async-timeoutable S 30000
       (let [store (<? S (new-firebasedb-store @db :prefix [prefix "store" @test-id "test-logs"]))]
         (<? S (k/append store :some-log {:my-elem 1}))
         (is (= [{:my-elem 1}]
                (<? S (k/log store :some-log))))))))
 
+; TODO: make it pass
+;(deftest test-invalid-path
+;  (testing "When I try to write something with an incorrect path it'll raise an error"
+;    (go-async-timeoutable S 30000
+;      (let [store (<? S (new-firebasedb-store @db :prefix [prefix "store" @test-id "test-logs"]))
+;            x (k/assoc-in store ["a/b"] {:my-elem 1})]
+;        (try
+;          ;; (is (thrown? js/Error (<? S x)))
+;          (is (nil? (<? S x)))
+;          (is false "should have thrown")
+;          (catch js/Error e
+;            (is true "did throw")))))))
