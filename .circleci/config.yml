@@ -11,6 +11,7 @@ jobs:
       - restore_cache:
           key: << checksum "project.clj" >>
       - run: apt update && apt install -qy phantomjs
+      - run: mkdir -p bin/ && wget "https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein" -O bin/lein && chmod +x bin/lein
       - run: bin/lein deps
       - save_cache:
           paths:
