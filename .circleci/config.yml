@@ -18,5 +18,5 @@ jobs:
             - ~/.m2
             - ~/.lein
           key: << checksum "project.clj" >>
-    test:
-      - run: bin/lein do phantom once test, jar, deploy
+      - run: bin/lein do test, doo phantom once test
+      - run: bin/lein do jar, deploy
