@@ -1,7 +1,16 @@
-(defproject lsenta/konserve-firebase "0.0.1"
+(defproject lsenta/konserve-firebase "0.0.2-SNAPSHOT"
 
   :description "A Firebase backend for konserve"
   :url "https://github.com/lsenta/konserve-firebase"
+  :license {:name "MIT License"}
+
+  :repositories [["releases" {:url      "https://clojars.org/repo/"
+                              :username :env/clojars_account
+                              :password :env/clojars_password}]
+                 ["snapshots" {:url      "https://clojars.org/repo/"
+                               :username :env/clojars_account
+                               :password :env/clojars_password}]]
+
 
   :dependencies
   [[org.clojure/clojure "1.9.0-alpha16" :scope "provided"]
