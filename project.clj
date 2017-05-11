@@ -4,9 +4,12 @@
   :url "https://github.com/lsenta/konserve-firebase"
   :license {:name "MIT License"}
 
-  :repositories [["releases" {:url      "https://clojars.org/repo/"
-                              :username :env/clojars_account
-                              :password :env/clojars_password}]
+  :repositories [["releases" {:url           "https://clojars.org/repo/"
+                              ;; no gpg signin, this makes deploy from circleci easier.
+                              ;; Open an issue if that's an issue for you.
+                              :sign-releases false
+                              :username      :env/clojars_account
+                              :password      :env/clojars_password}]
                  ["snapshots" {:url      "https://clojars.org/repo/"
                                :username :env/clojars_account
                                :password :env/clojars_password}]]
