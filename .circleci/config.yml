@@ -3,16 +3,11 @@ jobs:
   build:
     working_directory: ~/konserve-firebase
     docker:
-      - image: openjdk:8
-    environment:
-      - LEIN_ROOT=nbd
-      - QT_QPA_PLATFORM=offscreen
+      - image: lsenta/cljs-testing:latest
     steps:
       - checkout
       - restore_cache:
           key: << checksum "project.clj" >>
-      - run: apt update && apt install -qy phantomjs
-      - run: mkdir -p bin/ && wget "https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein" -O bin/lein && chmod +x bin/lein
       - run: bin/lein with-profile +test deps
       - save_cache:
           paths:
