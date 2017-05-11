@@ -7,7 +7,7 @@ library. This is Clojurescript only.
 Usage
 -----
 
-[![Clojars Project](https://img.shields.io/clojars/v/konserve-firebase.svg)](https://clojars.org/konserve-firebase)
+[![Clojars Project](https://img.shields.io/clojars/v/lsenta/konserve-firebase.svg)](https://clojars.org/lsenta/konserve-firebase)
 [![CircleCI](https://circleci.com/gh/lsenta/konserve-firebase.svg?style=svg)](https://circleci.com/gh/lsenta/konserve-firebase)
 
 The library provides 2 namespaces:
