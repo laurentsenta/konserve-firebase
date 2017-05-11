@@ -22,7 +22,7 @@
    [io.replikativ/superv.async "0.2.6"]
    [io.replikativ/konserve "0.4.9"]
 
-   [lsenta/figwheel-testbook "0.0.1" :scope "test"]
+   [lsenta/figwheel-testbook "0.0.2" :scope "test"]
    [lein-doo "0.1.7" :scope "test"]
    [binaryage/devtools "0.9.2" :scope "test"]
    [binaryage/dirac "1.2.2" :scope "test"]]
