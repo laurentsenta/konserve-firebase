@@ -78,15 +78,14 @@
         (is (= [{:my-elem 1}]
                (<? S (k/log store :some-log))))))))
 
-; TODO: make it pass
-;(deftest test-invalid-path
-;  (testing "When I try to write something with an incorrect path it'll raise an error"
-;    (go-async-timeoutable S 30000
-;      (let [store (<? S (new-firebasedb-store @db :prefix [prefix "store" @test-id "test-logs"]))
-;            x (k/assoc-in store ["a/b"] {:my-elem 1})]
-;        (try
-;          ;; (is (thrown? js/Error (<? S x)))
-;          (is (nil? (<? S x)))
-;          (is false "should have thrown")
-;          (catch js/Error e
-;            (is true "did throw")))))))
+(deftest test-invalid-path
+  (testing "When I try to write something with an incorrect path it'll raise an error"
+    (go-async-timeoutable S 30000
+      (let [store (<? S (new-firebasedb-store @db :prefix [prefix "store" @test-id "test-logs"]))
+            x (k/assoc-in store ["a/b"] {:my-elem 1})]
+        (try
+          ;; (is (thrown? js/Error (<? S x)))
+          (is (nil? (<? S x)))
+          (is false "should have thrown")
+          (catch js/Error e
+            (is true "did throw")))))))
