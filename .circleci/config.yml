@@ -2,6 +2,8 @@ version: 2
 jobs:
   build:
     working_directory: ~/konserve-firebase
+    environment:
+      - JVM_OPTS=-Xmx3500m
     docker:
       - image: lsenta/cljs-testing:latest
     steps:
